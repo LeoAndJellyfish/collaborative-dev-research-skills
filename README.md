@@ -1,6 +1,6 @@
 # 合作式开发与研究技能
 
-两项可独立安装的 Codex 技能，用于用户与代理共同推进多阶段项目。用户确认关键路线与取舍，代理按依赖执行，持续维护进展、验收证据与阶段交接。
+两项可独立安装的技能，适用于支持 Agent Skills 规范的 AI 工具。用户确认关键路线与取舍，代理按任务依赖推进，记录进展、验收证据和阶段交接。[Agent Skills 规范](https://agentskills.io/specification)
 
 | 技能 | 适用场景 | 关键记录 |
 | --- | --- | --- |
@@ -9,16 +9,21 @@
 
 ## 安装与使用
 
-在 Codex 中发送以下指令，按需保留要安装的技能路径。
+下载或克隆本仓库，从 `skills/` 下选取所需技能，将整个技能目录复制到工具的用户级或项目级技能目录，并保留原目录名。
 
-```text
-使用 $skill-installer 从 LeoAndJellyfish/collaborative-dev-research-skills 安装 skills/collaborative-development 和 skills/collaborative-research。
-```
+| 工具 | 用户级目录 | 项目级目录 | 官方文档 |
+| --- | --- | --- | --- |
+| Codex | `~/.agents/skills/` | `.agents/skills/` | [Codex 技能](https://learn.chatgpt.com/docs/build-skills#where-codex-loads-local-skills) |
+| Claude Code | `~/.claude/skills/` | `.claude/skills/` | [Claude Code 技能](https://code.claude.com/docs/en/skills#choose-where-skills-load) |
+| Gemini CLI | `~/.agents/skills/` | `.agents/skills/` | [Gemini CLI 技能](https://geminicli.com/docs/cli/skills/#discovery-tiers) |
+| OpenCode | `~/.agents/skills/` | `.agents/skills/` | [OpenCode 技能](https://opencode.ai/docs/skills) |
 
-在项目会话中调用对应技能，可附上现有的 README、计划或实验记录。
+各工具从 `SKILL.md` 读取技能。以用户级安装为例，研究技能在共享目录中的入口为 `~/.agents/skills/collaborative-research/SKILL.md`。随附的 `agents/openai.yaml` 提供 Codex 的可选界面信息。
 
-- `使用 $collaborative-development 为这次重构拟定路线图，说明兼容性取舍和各阶段的验收条件。`
-- `使用 $collaborative-research 按 README 中已确认的路线继续，汇总本轮结果和触发下一阶段的条件。`
+在项目会话中指定技能名，可附上现有的 README、计划或实验记录。显式调用遵循工具约定，例如 Codex 中的 `$collaborative-research` 或 Claude Code 中的 `/collaborative-research`。
+
+- `使用 collaborative-development 为这次重构拟定路线图，说明兼容性取舍和各阶段的验收条件。`
+- `使用 collaborative-research 按 README 中已确认的路线继续，汇总本轮结果和触发下一阶段的条件。`
 
 ## 路线图示例
 
