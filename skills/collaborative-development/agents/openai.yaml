@@ -1,0 +1,3 @@
+interface:
+  display_name: "合作式开发"
+  short_description: "共同确认开发路线，按依赖推进并行任务，验证阶段交付并归档。"
